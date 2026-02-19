@@ -1,9 +1,10 @@
 <!-- Suppress the default NativeScript navigation bar; we use our own header. -->
 <ActionBar flat="true" backgroundColor="#111111" color="transparent"></ActionBar>
 
-<GridLayout rows="auto, *" columns="200, *" class="viewer-root">
+<GridLayout rows="auto, *" columns="140, *" class="viewer-root">
 
-  <GridLayout row="0" colSpan="2" columns="auto, *, auto, auto" class="header">
+  <!-- ══ Header (spans all columns) ══════════════════════════════════════ -->
+  <GridLayout row="0" colSpan="2" columns="auto, *" class="header">
 
     <!-- App title -->
     <StackLayout col="0" orientation="horizontal" verticalAlignment="center" class="title-group">
@@ -11,7 +12,7 @@
       <Label text=" Viewer" class="title-sub"></Label>
     </StackLayout>
 
-    <!-- Universe count badge (centre) -->
+    <!-- Universe count badge -->
     <StackLayout col="1" orientation="horizontal" verticalAlignment="center" class="badge-group">
       <StackLayout class="universe-badge">
         <Label
@@ -21,25 +22,12 @@
       </StackLayout>
     </StackLayout>
 
-    <!-- Status indicator -->
-    <StackLayout col="2" orientation="horizontal" verticalAlignment="center" class="status-group">
-      <StackLayout class="status-dot" [backgroundColor]="statusColor()"></StackLayout>
-      <Label [text]="statusText()" class="status-label" [color]="statusColor()"></Label>
-    </StackLayout>
-
-    <!-- Simulate toggle button -->
-    <Button
-      col="3"
-      [text]="isSimulating() ? '⬛ Stop Sim' : '▶ Simulate'"
-      (tap)="toggleSimulate()"
-      class="sim-btn"
-      [class.sim-btn--active]="isSimulating()">
-    </Button>
-
   </GridLayout>
 
+  <!-- ══ Sidebar ══════════════════════════════════════════════════════════ -->
   <ns-universe-sidebar row="1" col="0" class="sidebar-panel"></ns-universe-sidebar>
 
+  <!-- ══ Channel grid ═════════════════════════════════════════════════════ -->
   <ns-channel-grid row="1" col="1" class="content-panel"></ns-channel-grid>
 
 </GridLayout>
