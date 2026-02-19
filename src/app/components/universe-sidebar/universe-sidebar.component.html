@@ -1,0 +1,61 @@
+<GridLayout rows="auto, *" class="sidebar-root">
+
+  <!-- ── Section header ─────────────────────────────────────────────────── -->
+  <StackLayout row="0" class="sidebar-header">
+    <Label text="UNIVERSES" class="sidebar-title"></Label>
+  </StackLayout>
+
+  <!-- ── Universe list ──────────────────────────────────────────────────── -->
+  <ListView
+    row="1"
+    [items]="sacnService.universes()"
+    [trackBy]="trackByUniverseId"
+    separatorColor="transparent"
+    class="universe-list">
+
+    <ng-template let-item="item">
+      <!-- Entire row is tappable -->
+      <GridLayout
+        columns="4, *, auto"
+        class="universe-item"
+        [class.universe-item--selected]="isSelected(item)"
+        (tap)="onSelectUniverse(item)">
+
+        <!-- Left accent bar -->
+        <StackLayout
+          col="0"
+          class="accent-bar"
+          [backgroundColor]="isSelected(item) ? '#00aaff' : 'transparent'">
+        </StackLayout>
+
+        <!-- Universe info -->
+        <StackLayout col="1" class="universe-info" verticalAlignment="center">
+          <Label [text]="item.label" class="universe-name"></Label>
+          <Label [text]="item.sourceName" class="universe-source" textWrap="false"></Label>
+        </StackLayout>
+
+        <!-- Rate + live dot -->
+        <StackLayout col="2" class="universe-meta" verticalAlignment="center">
+          <Label [text]="rateLabel(item)" class="universe-rate" textAlignment="right"></Label>
+          <StackLayout
+            class="live-dot"
+            [backgroundColor]="isLive(item) ? '#00e676' : '#2a2a2a'">
+          </StackLayout>
+        </StackLayout>
+
+      </GridLayout>
+    </ng-template>
+
+  </ListView>
+
+  <!-- ── Empty state ────────────────────────────────────────────────────── -->
+  <StackLayout
+    *ngIf="sacnService.universes().length === 0"
+    row="1"
+    class="empty-state"
+    verticalAlignment="center">
+    <Label text="No universes" class="empty-title" textAlignment="center"></Label>
+    <Label text="Waiting for sACN data…" class="empty-sub" textAlignment="center" textWrap="true"></Label>
+  </StackLayout>
+
+</GridLayout>

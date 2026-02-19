@@ -1,0 +1,95 @@
+/* ── Container ────────────────────────────────────────────────────────────── */
+.sidebar-root {
+  background-color: #141414;
+}
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+.sidebar-header {
+  padding: 16 12 10 16;
+  border-bottom-width: 1;
+  border-bottom-color: #2a2a2a;
+}
+
+.sidebar-title {
+  font-size: 10;
+  font-weight: 700;
+  color: #555555;
+  letter-spacing: 1.5;
+}
+
+/* ── Universe list ───────────────────────────────────────────────────────── */
+.universe-list {
+  background-color: transparent;
+}
+
+/* ── Universe row ────────────────────────────────────────────────────────── */
+.universe-item {
+  background-color: #1a1a1a;
+  margin: 2 8;
+  border-radius: 6;
+  height: 62;
+}
+
+.universe-item--selected {
+  background-color: #1e2a38;
+}
+
+/* Left accent bar */
+.accent-bar {
+  border-radius: 0 0 0 6;
+  width: 4;
+}
+
+/* Info column */
+.universe-info {
+  padding: 0 8;
+}
+
+.universe-name {
+  font-size: 14;
+  font-weight: 600;
+  color: #e8e8e8;
+}
+
+.universe-source {
+  font-size: 11;
+  color: #666666;
+  margin-top: 2;
+}
+
+/* Meta column */
+.universe-meta {
+  padding: 0 10 0 4;
+}
+
+.universe-rate {
+  font-size: 11;
+  color: #888888;
+  font-weight: 500;
+}
+
+/* Live indicator dot */
+.live-dot {
+  width: 6;
+  height: 6;
+  border-radius: 3;
+  margin: 4 0 0 auto;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.empty-state {
+  padding: 32;
+}
+
+.empty-title {
+  font-size: 14;
+  font-weight: 600;
+  color: #555555;
+  margin-bottom: 6;
+}
+
+.empty-sub {
+  font-size: 12;
+  color: #3a3a3a;
+  line-height: 1.5;
+}

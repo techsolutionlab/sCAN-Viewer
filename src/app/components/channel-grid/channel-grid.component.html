@@ -1,0 +1,112 @@
+<GridLayout rows="auto, *" class="grid-root">
+
+  <!-- ── Universe header bar ────────────────────────────────────────────── -->
+  <GridLayout
+    *ngIf="hasSelection()"
+    row="0"
+    columns="*, auto"
+    class="grid-header">
+    <StackLayout col="0" orientation="horizontal" class="header-info">
+      <Label [text]="selectedUniverse()?.label ?? ''" class="header-universe"></Label>
+      <Label text="  ·  " class="header-sep"></Label>
+      <Label [text]="selectedUniverse()?.sourceName ?? ''" class="header-source"></Label>
+      <Label text="  ·  " class="header-sep"></Label>
+      <Label text="Priority " class="header-label"></Label>
+      <Label [text]="selectedUniverse()?.priority ?? 100" class="header-value"></Label>
+    </StackLayout>
+    <StackLayout col="1" class="header-rate">
+      <Label
+        [text]="(selectedUniverse()?.packetRate ?? 0) > 0
+          ? (selectedUniverse()!.packetRate + ' Hz')
+          : '–'"
+        class="header-rate-label">
+      </Label>
+    </StackLayout>
+  </GridLayout>
+
+  <!-- ── Placeholder header when nothing selected ───────────────────────── -->
+  <StackLayout *ngIf="!hasSelection()" row="0" class="grid-header">
+    <Label text=""></Label>
+  </StackLayout>
+
+  <!-- ── Channel rows (virtualized ListView of 64 rows × 8 cols) ─────────── -->
+  <ListView
+    *ngIf="hasSelection()"
+    row="1"
+    [items]="sacnService.selectedChannelRows()"
+    [trackBy]="trackByRowIndex"
+    separatorColor="transparent"
+    class="row-list">
+
+    <ng-template let-row="item">
+      <GridLayout columns="*, *, *, *, *, *, *, *" class="channel-row">
+
+        <!-- Channel 0 -->
+        <StackLayout col="0" class="ch-box" [backgroundColor]="bgColors[row.cells[0].value]">
+          <Label [text]="row.cells[0].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[0].value" class="ch-val" [color]="txtColors[row.cells[0].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 1 -->
+        <StackLayout col="1" class="ch-box" [backgroundColor]="bgColors[row.cells[1].value]">
+          <Label [text]="row.cells[1].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[1].value" class="ch-val" [color]="txtColors[row.cells[1].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 2 -->
+        <StackLayout col="2" class="ch-box" [backgroundColor]="bgColors[row.cells[2].value]">
+          <Label [text]="row.cells[2].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[2].value" class="ch-val" [color]="txtColors[row.cells[2].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 3 -->
+        <StackLayout col="3" class="ch-box" [backgroundColor]="bgColors[row.cells[3].value]">
+          <Label [text]="row.cells[3].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[3].value" class="ch-val" [color]="txtColors[row.cells[3].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 4 -->
+        <StackLayout col="4" class="ch-box" [backgroundColor]="bgColors[row.cells[4].value]">
+          <Label [text]="row.cells[4].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[4].value" class="ch-val" [color]="txtColors[row.cells[4].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 5 -->
+        <StackLayout col="5" class="ch-box" [backgroundColor]="bgColors[row.cells[5].value]">
+          <Label [text]="row.cells[5].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[5].value" class="ch-val" [color]="txtColors[row.cells[5].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 6 -->
+        <StackLayout col="6" class="ch-box" [backgroundColor]="bgColors[row.cells[6].value]">
+          <Label [text]="row.cells[6].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[6].value" class="ch-val" [color]="txtColors[row.cells[6].value]"></Label>
+        </StackLayout>
+
+        <!-- Channel 7 -->
+        <StackLayout col="7" class="ch-box" [backgroundColor]="bgColors[row.cells[7].value]">
+          <Label [text]="row.cells[7].channel" class="ch-num"></Label>
+          <Label [text]="row.cells[7].value" class="ch-val" [color]="txtColors[row.cells[7].value]"></Label>
+        </StackLayout>
+
+      </GridLayout>
+    </ng-template>
+
+  </ListView>
+
+  <!-- ── Empty / no universe selected ──────────────────────────────────── -->
+  <StackLayout
+    *ngIf="!hasSelection()"
+    row="1"
+    class="no-selection"
+    verticalAlignment="center">
+    <Label text="No Universe Selected" class="no-sel-title" textAlignment="center"></Label>
+    <Label
+      text="Tap a universe in the sidebar to view its 512 channels."
+      class="no-sel-sub"
+      textAlignment="center"
+      textWrap="true">
+    </Label>
+  </StackLayout>
+
+</GridLayout>

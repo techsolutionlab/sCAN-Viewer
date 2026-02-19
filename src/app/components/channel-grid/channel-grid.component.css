@@ -1,0 +1,109 @@
+/* ── Root container ───────────────────────────────────────────────────────── */
+.grid-root {
+  background-color: #0d0d0d;
+}
+
+/* ── Universe header bar ─────────────────────────────────────────────────── */
+.grid-header {
+  background-color: #141414;
+  padding: 10 16;
+  border-bottom-width: 1;
+  border-bottom-color: #2a2a2a;
+  height: 44;
+}
+
+.header-info {
+  vertical-align: center;
+}
+
+.header-universe {
+  font-size: 14;
+  font-weight: 700;
+  color: #e8e8e8;
+}
+
+.header-sep {
+  font-size: 14;
+  color: #3a3a3a;
+}
+
+.header-source {
+  font-size: 13;
+  color: #888888;
+}
+
+.header-label {
+  font-size: 12;
+  color: #555555;
+}
+
+.header-value {
+  font-size: 12;
+  color: #00aaff;
+  font-weight: 600;
+}
+
+.header-rate {
+  vertical-align: center;
+}
+
+.header-rate-label {
+  font-size: 12;
+  color: #00e676;
+  font-weight: 600;
+}
+
+/* ── Channel row ListView ────────────────────────────────────────────────── */
+.row-list {
+  background-color: transparent;
+}
+
+.channel-row {
+  padding: 3 4;
+  background-color: transparent;
+}
+
+/* ── Individual channel box ──────────────────────────────────────────────── */
+.ch-box {
+  margin: 2;
+  padding: 5 2 6 2;
+  border-radius: 4;
+  /* background-color is set dynamically */
+}
+
+/* Channel number (top, small and dim) */
+.ch-num {
+  font-size: 9;
+  color: #555555;
+  text-align: center;
+  text-align-last: center;
+}
+
+/* DMX value (bottom, larger, colour from CHANNEL_TEXT table) */
+.ch-val {
+  font-size: 12;
+  font-weight: 600;
+  text-align: center;
+  text-align-last: center;
+  margin-top: 4;
+  /* color is set dynamically via [color] binding */
+}
+
+/* ── No-selection state ──────────────────────────────────────────────────── */
+.no-selection {
+  padding: 48;
+}
+
+.no-sel-title {
+  font-size: 18;
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: 10;
+}
+
+.no-sel-sub {
+  font-size: 13;
+  color: #333333;
+  line-height: 1.5;
+  max-width: 280;
+}
