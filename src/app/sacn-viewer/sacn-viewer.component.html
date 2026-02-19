@@ -1,10 +1,9 @@
-<!-- Suppress the default NativeScript navigation bar; we use our own header. -->
 <ActionBar flat="true" backgroundColor="#111111" color="transparent"></ActionBar>
 
 <GridLayout rows="auto, *" columns="140, *" class="viewer-root">
 
   <!-- ══ Header (spans all columns) ══════════════════════════════════════ -->
-  <GridLayout row="0" colSpan="2" columns="auto, *" class="header">
+  <GridLayout row="0" colSpan="2" columns="auto, *, auto" class="header">
 
     <!-- App title -->
     <StackLayout col="0" orientation="horizontal" verticalAlignment="center" class="title-group">
@@ -21,6 +20,15 @@
         </Label>
       </StackLayout>
     </StackLayout>
+
+    <!-- Simulate toggle button -->
+    <Button
+      col="2"
+      [text]="isSimulating() ? '⬛ Stop' : '▶ Simulate'"
+      (tap)="toggleSimulate()"
+      class="sim-btn"
+      [class.sim-btn--active]="isSimulating()">
+    </Button>
 
   </GridLayout>
 
