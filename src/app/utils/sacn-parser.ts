@@ -1,29 +1,5 @@
 /**
  * E1.31 (sACN) packet parser.
- *
- * Packet layout (zero-based byte offsets):
- *   [0-1]   Preamble size        = 0x0010
- *   [2-3]   Post-amble size      = 0x0000
- *   [4-15]  ACN Packet Identifier (12 bytes)
- *   [16-17] Root layer flags & length
- *   [18-21] Root vector          = 0x00000004 (VECTOR_ROOT_E131_DATA)
- *   [22-37] CID (16 bytes)
- *   [38-39] Framing layer flags & length
- *   [40-43] Framing vector       = 0x00000002 (VECTOR_E131_DATA_PACKET)
- *   [44-107] Source name (64 bytes, null-terminated UTF-8)
- *   [108]   Priority
- *   [109-110] Sync address
- *   [111]   Sequence number
- *   [112]   Options
- *   [113-114] Universe (big-endian)
- *   [115-116] DMP layer flags & length
- *   [117]   DMP vector           = 0x02
- *   [118]   Address type & data type = 0xA1
- *   [119-120] First property address = 0x0000
- *   [121-122] Address increment  = 0x0001
- *   [123-124] Property count     = 0x0201 (513)
- *   [125]   DMX start code       = 0x00
- *   [126-637] DMX channel values (512 bytes)
  */
 
 import { SacnPacket } from '../models/sacn.models';
